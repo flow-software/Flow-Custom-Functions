@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup Label="Globals">
+		<SccProjectName>SAK</SccProjectName>
+		<SccProvider>SAK</SccProvider>
+		<SccAuxPath>SAK</SccAuxPath>
+		<SccLocalPath>SAK</SccLocalPath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<AssemblyName>Custom Built In Functions</AssemblyName>
+		<Configurations>Debug;Release</Configurations>
+		<RootNamespace>Flow</RootNamespace>
+		<EnableDynamicLoading>true</EnableDynamicLoading>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Main\**" />
+	  <EmbeddedResource Remove="Main\**" />
+	  <None Remove="Main\**" />
+	</ItemGroup>
+	<PropertyGroup>
+		<BaseVersionPath>Version.txt</BaseVersionPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Build-Tasks" Version="2.1.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="Flow.Plugin.Framework">
+	    <HintPath>Flow.Plugin.Framework.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
+
+	<Target Name="CreateFlowPackage" AfterTargets="PostBuildEvent">
+		<PackageBuildTask ComponentType="Limits" TargetPath="$(TargetDir)" TargetName="$(TargetFileName)" OutputPath="$(SolutionDir)Flow Packages"></PackageBuildTask>
+	</Target>
+
+</Project>

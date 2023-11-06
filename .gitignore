@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/bin/Debug/net6.0
+/Custom Functions/bin/Debug/net6.0
+/Custom Functions/obj
+/Flow Packages
+/obj
+/.vs
